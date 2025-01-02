@@ -14,14 +14,14 @@ body {
   display: grid;
   height: 100%;
   place-items: center;
-  background-color: #212121; /* Dark background */
+  background-color: #212121;
 }
 
 body {
   overflow: hidden;
 }
 
-/* Add these styles if needed */
+/* Eye Wrapper */
 .wrapper {
   display: flex;
   justify-content: center;
@@ -34,16 +34,18 @@ body {
 .btn-button {
   background: #fff;
   border: 3px solid #fff;
-  border-radius: 10rem;
+  border-radius: 50%;
   cursor: pointer;
   padding: 2rem;
   position: relative;
   z-index: 100;
+  transition: all 0.3s ease-in-out; /* Add transition for smooth border animation */
 }
 
 .btn-button:hover,
 .btn-button:hover .btn-lid {
   animation: eye-lid 100ms forwards;
+  border: 3px solid #ffcc00; /* Change border color on hover */
 }
 
 .btn-button:active .btn-pupil {
@@ -65,9 +67,10 @@ body {
 .btn-pupil {
   background: #000;
   border: 0.8rem solid rgb(156, 207, 255);
-  border-radius: 10rem;
+  border-radius: 50%;
   padding: 0.7rem;
   transition: all 200ms ease-out;
+  transition: transform 0.3s ease; /* Smooth transition for pupil movement */
 }
 
 /* Sensor Styles */
@@ -179,4 +182,22 @@ body {
       #000 65% 100%
     );
   }
+}
+
+/* Animation for Eye Border */
+@keyframes border-animation {
+  0% {
+    border-color: #ffffff;
+  }
+  50% {
+    border-color: #ffcc00; /* Highlight border */
+  }
+  100% {
+    border-color: #ffffff; /* Back to original color */
+  }
+}
+
+/* Apply border animation */
+.btn-button:hover {
+  animation: border-animation 1s infinite; /* Infinite animation for border */
 }
